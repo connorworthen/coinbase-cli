@@ -9,24 +9,23 @@ class CLI
 
   def start
     puts ""
-    make_coins
-    display_coins
-    more_detail
-    closing_time
+    create_coins
+    crypto_prices
+    extra_detail
+    end_cli
   end
 
-  def make_coins
+  def create_coins
     if Coin.all.empty?
       coins_array = Scraper.scrape_index_page
       Coin.create_from_full_list(coins_array)
       Coin.all
     else
       Coin.all
+    end
   end
 
-  end
-
-  def display_coins
+  def crypto_prices
     Coin.all.each do |coin|
       puts "#{coin.name}" + " - (#{coin.short_code.upcase})"
       puts "  Price:" + " #{coin.price}"
@@ -34,7 +33,7 @@ class CLI
     end
   end
 
-  def coin_detail(input)
+  def extra_detail(input)
     single = Coin.find_by_name(input)
     description = Scraper.scrape_description(single.url)
     Coin.update_description(single, description)
@@ -44,18 +43,14 @@ class CLI
     puts " Market Cap" + " #{single.market_cap}"
     puts " Description:" + " #{single.description}"
     puts " Coin Website:" + " #{single.url}"
-    sleep(5)
   end
 
   def more_detail
     puts ""
     puts "To view more specific information on a particular coin, enter the coins shortcode or enter ALL, to see the comprehensive list of all available cryptocurrencies! If you wish to exit the program, enter BYE."
-
     input = gets.strip.upcase
-
     puts ""
     puts ""
-
     if Coin.find_by_name(input)
       coin_detail(input)
     elsif input == "BYE"
@@ -67,13 +62,11 @@ class CLI
     else
       puts ""
       puts "I cannot understand your input, please try again using the coins shortcode."
-      sleep(5)
       start
     end
   end
 
-
-def closing_time
+  def end_cli
     puts ""
       puts "To access more information on a particular coin enter Y, if no enter N."
       input = gets.strip.downcase
@@ -89,7 +82,6 @@ def closing_time
         puts ""
         start
       end
+    end
   end
-
-
 end
