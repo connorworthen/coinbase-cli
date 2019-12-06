@@ -12,16 +12,20 @@ class Crypto
     end
     @@all << self
   end
-
-  def self.list(crypto_hash_array)
-    crypto_array.each do |crypto_hash|
-    Crypto.new(crypto_hash)
-    end
+  
+  def self.name(shortcode)
+    single = self.all.detect{|c| c.short_code == shortcode}
   end
-
+  
   def self.description(single, description)
     if single.description.nil?
     single.description = description
+    end
+  end
+  
+  def self.list(crypto_hash_array)
+    crypto_array.each do |crypto_hash|
+    Crypto.new(crypto_hash)
     end
   end
 
