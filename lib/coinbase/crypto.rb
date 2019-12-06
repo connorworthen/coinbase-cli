@@ -2,7 +2,7 @@ require "pry"
 
 class Crypto
   
-  attr_accessor :name, :short_code, :price, :url, :market_cap, :description
+  attr_accessor :name, :market_cap, :description, :short_code, :url
   
   @@all = []
  
