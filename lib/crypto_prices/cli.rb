@@ -6,10 +6,18 @@ class CLI
     puts "Greetings fellow cyborgs and welcome to my very own Coinbase CLI! In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com."
     start
   end
+  
+   def start
+    puts ""
+    make_coins
+    display_coins
+    more_detail
+    closing_time
+  end
 
-  def create_coins
+  def make_coins
     if Coin.all.empty?
-      coins_array = Scraper.new.scrape_index_page
+      coins_array = Scraper.scrape_index_page
       Coin.create_from_full_list(coins_array)
       Coin.all
     else
@@ -17,7 +25,7 @@ class CLI
     end
   end
 
-  def crypto_prices
+  def display_coins
     Coin.all.each do |coin|
       puts "#{coin.name}" + " - (#{coin.short_code.upcase})"
       puts "  Price:" + " #{coin.price}"
@@ -25,7 +33,7 @@ class CLI
     end
   end
 
-  def extra_detail(input)
+  def coin_detail(input)
     single = Coin.find_by_name(input)
     description = Scraper.scrape_description(single.url)
     Coin.update_description(single, description)
@@ -52,7 +60,7 @@ class CLI
     end
   end
 
-  def end_cli
+  def closing_time
       puts "To access more information on a particular coin enter Y, if not enter N."
       input = gets.strip.downcase
       if input == "y"
