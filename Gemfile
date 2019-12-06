@@ -1,4 +1,6 @@
 source "https://rubygems.org"
-gem 'pry'
+
 # Specify your gem's dependencies in coinbase-cli.gemspec
 gemspec
+gem 'pry'
+gem 'nokogiri', '1.10'
