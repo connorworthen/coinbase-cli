@@ -1,7 +1,6 @@
 require 'pry'
-require_relative './crypto.rb'
-require_relative './scraper.rb'
-class Prices::CLI
+
+class CLI
 
   def call
     puts "Greetings fellow cyborgs and welcome to my very own Coinbase CLI! In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com."
