@@ -1,7 +1,5 @@
-#!/cli-project-coinbase/bin/env ruby
+#!/usr/bin/env ruby
 
-require "bundler/setup"
-require 'classes/cli.rb'
+require_relative '../lib/crypto_prices'
 
-Prices::CLI.new.intro
-
+CLI.new.call
