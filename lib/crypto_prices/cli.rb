@@ -1,4 +1,4 @@
-require 'pry'
+require "pry"
 
 class CLI
 
@@ -6,8 +6,8 @@ class CLI
     puts "Greetings fellow cyborgs and welcome to my very own Coinbase CLI! In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com."
     start
   end
-  
-   def start
+
+  def start
     puts ""
     make_coins
     display_coins
@@ -22,14 +22,15 @@ class CLI
       Coin.all
     else
       Coin.all
-    end
+  end
+
   end
 
   def display_coins
     Coin.all.each do |coin|
       puts "#{coin.name}" + " - (#{coin.short_code.upcase})"
       puts "  Price:" + " #{coin.price}"
-      puts "--------"
+      puts "----------------------"
     end
   end
 
@@ -38,40 +39,57 @@ class CLI
     description = Scraper.scrape_description(single.url)
     Coin.update_description(single, description)
     puts "#{single.name}" + " - (#{single.short_code.upcase})"
+    puts ""
     puts " Price:" + " #{single.price}"
     puts " Market Cap" + " #{single.market_cap}"
     puts " Description:" + " #{single.description}"
     puts " Coin Website:" + " #{single.url}"
+    sleep(3)
   end
 
   def more_detail
-    puts "To view more specific information on a particular coin, enter the coins shortcode or enter ALL, to see the comprehensive list of all available cryptocurrencies! If you wish to exit the program, enter BYE."
+    puts ""
+    puts "View detail on a coin by typing the coin shortcode (i.e. 'BTC' or 'ETH'). To view full list again type, LIST. To exit, type N."
+
     input = gets.strip.upcase
+
+    puts ""
+    puts ""
+
     if Coin.find_by_name(input)
       coin_detail(input)
-    elsif input == "BYE"
-      puts "Thank you for stopping by and may the odds be in your favor!"
+    elsif input == "N"
+      puts ""
+      puts "Thank you! Have a great day and happy investing!"
       exit
-    elsif input == "All"
+    elsif input == "LIST"
       start
     else
-      puts "I cannot understand your input, please try again using the coins shortcode."
+      puts ""
+      puts "I don't understand that answer.  Remember to use the coin shortcode."
+      sleep(3)
       start
     end
   end
 
-  def closing_time
-      puts "To access more information on a particular coin enter Y, if not enter N."
+
+def closing_time
+    puts ""
+      puts "Would you like to see information on another coin? Enter Y or N"
       input = gets.strip.downcase
       if input == "y"
         start
       elsif input == "n"
-        puts "Thank you for stopping by and may the odds be in your favor!"
+        puts ""
+        puts "Thank you! Have a great day and happy investing!"
         exit
       else
-        puts "I cannot understand your input, please try again using the coins shortcode."
+        puts ""
+        puts "I don't understand that answer and sure cannot invest it."
+        puts ""
         start
       end
   end
-  
+
+
 end
