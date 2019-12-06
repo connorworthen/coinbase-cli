@@ -4,4 +4,3 @@ require_relative '../lib/coinbase'
 
 CLI.new.call
 
-require "bundler/setup"
