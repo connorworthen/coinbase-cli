@@ -2,7 +2,7 @@ require "pry"
 
 class CLI
 
-  def call
+  def intro
     puts "Greetings fellow cyborgs and welcome to my very own Coinbase CLI! In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com."
     start
   end
