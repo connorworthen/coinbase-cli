@@ -1,11 +1,11 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "lib/crypto_prices"
+require "crypto_prices/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "coinbase-cli"
-  spec.version       = Coinbase::Cli::VERSION
+  spec.version       = CryptoPrices::VERSION
   spec.authors       = ["'connor worthen'"]
   spec.email         = ["'connorw220@protonmail.com'"]
 
