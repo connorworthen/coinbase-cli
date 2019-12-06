@@ -1,6 +1,7 @@
-#!/usr/bin/env ruby
+#!/cli-project-coinbase-cli/bin/env ruby
 
-require_relative '../lib/coinbase-cli'
+require "bundler/setup"
+require 'classes/cli.rb'
 
-CLI.new.call
+Coinbase-cli::CLI.new.call
 

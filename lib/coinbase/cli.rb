@@ -1,5 +1,5 @@
 require "pry"
-
+require_relative './'
 class CLI
 
   def intro
