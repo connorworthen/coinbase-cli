@@ -1,8 +1,5 @@
 #!/usr/bin/env ruby
 
-require "bundler/setup"
-require '../crypto_prices/crypto'
-require '../crypto_prices/prices'
-require '../crypto_prices/scraper.rb'
+require_relative '../lib/crypto_prices'
 
-Prices::CLI.new.call
+CLI.new.call
