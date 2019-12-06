@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/crypto_prices'
+require_relative '../lib/crypto'
+require_relative '../lib/prices'
+require_relative '../lib/scraper.rb'
 
 Prices::CLI.new.call
