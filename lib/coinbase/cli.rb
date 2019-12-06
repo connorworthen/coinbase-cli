@@ -17,7 +17,7 @@ class CLI
 
   def create_coins
     if Coin.all.empty?
-      coins_array = Scraper.scrape_index_page
+      coins_array = Scraper.new.scrape_index_page
       Coin.create_from_full_list(coins_array)
       Coin.all
     else
@@ -68,7 +68,7 @@ class CLI
 
   def end_cli
     puts ""
-      puts "To access more information on a particular coin enter Y, if no enter N."
+      puts "To access more information on a particular coin enter Y, if not enter N."
       input = gets.strip.downcase
       if input == "y"
         start
@@ -82,6 +82,6 @@ class CLI
         puts ""
         start
       end
-    end
   end
+  
 end
