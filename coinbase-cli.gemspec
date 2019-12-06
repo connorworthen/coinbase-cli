@@ -1,7 +1,7 @@
 
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "coinbase/cli/version"
+require "coinbase-cli/lib/crypto_prices.rb"
 
 Gem::Specification.new do |spec|
   spec.name          = "coinbase-cli"
