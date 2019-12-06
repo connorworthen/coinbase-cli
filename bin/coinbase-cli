@@ -2,4 +2,4 @@
 
 require_relative '../lib/crypto_prices'
 
-CLI.new.call
+Prices::CLI.new.call
