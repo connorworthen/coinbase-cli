@@ -2,94 +2,52 @@ require "pry"
 
 class CLI
 
-  def call
-    puts "Greetings fellow cyborgs and welcome to my very own Coinbase CLI! In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com."
-    start
-  end
-
   def start
     puts ""
-    make_coins
-    display_coins
-    more_detail
-    closing_time
+    welcome
+    intro
+    menu_setting
   end
 
-  def make_coins
-    if Coin.all.empty?
-      coins_array = Scraper.scrape_index_page
-      Coin.create_from_full_list(coins_array)
-      Coin.all
-    else
-      Coin.all
+  def call
+    puts "Welcome to my very own Coinbase CLI"
   end
-
-  end
-
-  def display_coins
-    Coin.all.each do |coin|
-      puts "#{coin.name}" + " - (#{coin.short_code.upcase})"
-      puts "  Price:" + " #{coin.price}"
-      puts "----------------------"
-    end
-  end
-
-  def coin_detail(input)
-    single = Coin.find_by_name(input)
-    description = Scraper.scrape_description(single.url)
-    Coin.update_description(single, description)
-    puts "#{single.name}" + " - (#{single.short_code.upcase})"
+  
+  def intro
     puts ""
-    puts " Price:" + " #{single.price}"
-    puts " Market Cap" + " #{single.market_cap}"
-    puts " Description:" + " #{single.description}"
-    puts " Coin Website:" + " #{single.url}"
-    sleep(3)
-  end
-
-  def more_detail
+    puts "In this program, you will be able to view different tradeable cryptocurrencies from coinbase.com"
+    puts "which will help to them with buying and selling decisions"
     puts ""
-    puts "View detail on a coin by typing the coin shortcode (i.e. 'BTC' or 'ETH'). To view full list again type, LIST. To exit, type N."
-
-    input = gets.strip.upcase
-
+    puts "---------------------------"
+    puts "Select a number from 1 - 4"
+    puts "---------------------------"
+    puts ""
+    puts (" 1. ") + "See current rate for your chosen token ** BTC, XMR, ETH, BCH, XLM **"
+    puts (" 2. ") + "See full library of exchanges together with their tokens and currencies"
+    puts (" 3. ") + "See exchanges that trade in your chosen currency"
+    puts (" 4. ") + "Exit"
     puts ""
     puts ""
-
-    if Coin.find_by_name(input)
-      coin_detail(input)
-    elsif input == "N"
-      puts ""
-      puts "Thank you! Have a great day and happy investing!"
-      exit
-    elsif input == "LIST"
-      start
-    else
-      puts ""
-      puts "I don't understand that answer.  Remember to use the coin shortcode."
-      sleep(3)
-      start
-    end
   end
-
-
-def closing_time
-    puts ""
-      puts "Would you like to see information on another coin? Enter Y or N"
-      input = gets.strip.downcase
-      if input == "y"
-        start
-      elsif input == "n"
-        puts ""
-        puts "Thank you! Have a great day and happy investing!"
-        exit
-      else
-        puts ""
-        puts "I don't understand that answer and sure cannot invest it."
-        puts ""
-        start
-      end
+  
+  def menu_setting
+   input = " "
+   while input
+     input = gets.chomp
+     case input
+       when "1"
+         current_rate_for_token
+       when "2"
+         show_all_exchanges_with_tokens_and_currencies
+       when "3"
+         show_exchanges_for_currency
+       when "4"
+         puts "Thank  you  for  using  my very own Coinbase CLI"
+         break
+         else
+         puts "That option does not exist. Please select a number from 1 - 4 "
+     end
+   end
   end
-
 
 end
