@@ -23,8 +23,8 @@ class Menu
     puts "---------------------------"
     puts ""
     puts (" 1. ") + "See current rate for your chosen token ** BTC, ETH, XRP, BCH, LTC **"
-    puts (" 2. ") + "See description  ** BTC, ETH, XRP, BCH, LTC **"
-    puts (" 3. ") + "See market cap  ** BTC, ETH, XRP, BCH, LTC **"
+    puts (" 2. ") + "See description"
+    puts (" 3. ") + "See market cap"
     puts (" 4. ") + "Exit"
     puts ""
     puts ""
@@ -36,11 +36,14 @@ class Menu
      input = gets.chomp
      case input
        when "1"
-         create_from_full_list
+         puts ""
+         current_rate
        when "2"
-         update_description
+         puts ""
+         description
        when "3"
-         find_by_name
+         puts ""
+         market_cap
        when "4"
          puts "Thank  you  for  using  my very own Coinbase CLI"
          break
@@ -49,5 +52,9 @@ class Menu
      end
    end
   end
-
+  
+  def current_rate
+    puts "test"
+  end
+    
 end

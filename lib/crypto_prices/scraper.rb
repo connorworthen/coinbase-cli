@@ -6,7 +6,7 @@ class Scraper
   def self.scrape_index_page
     price_page = Nokogiri::HTML(open("https://www.coinbase.com/price"))
     coins = []
-    price_page.css("tr")[1..13].each do |coin|
+    price_page.css("tr")[1..6].each do |coin|
       coin_name = coin.css("span > h4").text.strip
       coin_price = coin.css("div > h4").text.strip
       coin_market_cap = coin.css("span > h4").text.strip
