@@ -1,6 +1,6 @@
 require "pry"
 
-class CLI
+class Menu
 
   def call
     puts "Welcome to my very own Coinbase CLI"
