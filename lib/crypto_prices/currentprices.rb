@@ -18,7 +18,7 @@ attr_accessor :coin, :coin_name
     @@all
   end
 
-  def prices  
+  def self.prices  
     current_prices = ["Bitcoin", "Ethereum", "XRP", "Bitcoin Cash", "Litecoin"]
     current_prices.each.with_index(1) do |coin, index|
       puts "#{index}. #{coin}"

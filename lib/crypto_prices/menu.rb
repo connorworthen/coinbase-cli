@@ -1,5 +1,6 @@
 require "pry"
 
+
 class Menu
 
   def menu
@@ -39,7 +40,7 @@ class Menu
          current_rates
       when "2"
          puts ""
-         all_coins   
+         all_bios
       when "4"
          puts "Thank  you  for  using  my very own Coinbase CLI"
          break
@@ -59,8 +60,8 @@ class Menu
     while input != "exit"
       puts ""
       puts "Choose a shortcode"
-        input = gets.strip
-        if (1..Currentprices.new.prices.length).include?(input)
+        input = gets.strip.to_i
+        if (1..CurrentPrices.prices.length).include?(input)
         coin = Scraper.scrape_coin_page[input - 1]
           puts "#{coin}"
         end

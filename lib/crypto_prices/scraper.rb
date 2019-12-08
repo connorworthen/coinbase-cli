@@ -23,21 +23,20 @@ class Scraper
   # end
   
   
-  def scrape_coin_page
+  def self.scrape_coin_page
     url = open("https://www.coinbase.com/price/bitcoin")
-    url = open("https://www.coinbase.com/price/ethereum")
+    url_2 = open("https://www.coinbase.com/price/ethereum")
     doc = Nokogiri::HTML(url)
+    doc_2 = Nokogiri::HTML(url_2)
     coins = []
     coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
-    coin.each do |element|
-      if element.attr('href').include?("bitcoin")
-        coins << element.attr("href")
-        elsif  element.attr('href').include?("ethereum")
-        coins << element.attr("href")
-      end
-      coins
-    end
+    coin_2 = doc_2.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
+    coins << coin
+    coins << coin_2
+  coins
   end
+  
+  
 
     
   # def self.scrape_index_page
