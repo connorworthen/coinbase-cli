@@ -2,7 +2,19 @@ require "pry"
 require 'open-uri'
 
 class Scraper
-
+  
+  def current_rate_page
+    html = "https://www.coinbase.com/price"
+  end
+  
+  def current_rate 
+    url = open(self.current_rate_page)
+    page = Nokogiri::HTML(url)
+    current_prices = coin.css.("span > h4").css("div > h4").text.strip.split("•")
+    current_prices.shift
+    new_prices = current_prices
+  end
+    
   def self.scrape_index_page
     price_page = Nokogiri::HTML(open("https://www.coinbase.com/price"))
     coins = []
