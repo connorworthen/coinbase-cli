@@ -57,7 +57,6 @@ class Menu
     Scraper.new.current_rate
       puts "Choose one of the following currencies to get the current rate and descriptionv** BTC, ETH, XRP, BCH, LTC **!"
       input = gets.strip.to_i
-    end
   end
   
   def description

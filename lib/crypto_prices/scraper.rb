@@ -1,5 +1,6 @@
-require "pry"
+require 'pry'
 require 'open-uri'
+require 'nokogiri'
 
 class Scraper
   
@@ -9,8 +10,8 @@ class Scraper
   
   def current_rate 
     url = open(self.current_rate_page)
-    page = Nokogiri::HTML(url)
-    current_prices = coin.css.("span > h4").css("div > h4").text.strip.split("•")
+    coin = Nokogiri::HTML(url)
+    current_prices = coin.css.("span > h4").text.strip
     current_prices.shift
     new_prices = current_prices
   end
