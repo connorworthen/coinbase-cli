@@ -1,5 +1,6 @@
 require 'pry'
 require_relative './scraper.rb'
+require_relative './menu.rb'
 
 class CurrentPrices
 

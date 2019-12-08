@@ -22,9 +22,8 @@ class Menu
     puts "Select a number from 1 - 4"
     puts "---------------------------"
     puts ""
-    puts (" 1. ") + "See current rate for your chosen token ** BTC, ETH, XRP, BCH, LTC **"
-    puts (" 2. ") + "See description"
-    puts (" 3. ") + "See market cap"
+    puts (" 1. ") + "Enter 1, to see list of all different coins."
+    puts (" 2. ") + "Enter 2, to see the current rate and description of a listed coin."
     puts (" 4. ") + "Exit"
     puts ""
     puts ""
@@ -37,14 +36,11 @@ class Menu
      case input
        when "1"
          puts ""
-         current_rate
-       when "2"
+         current_rates
+      when "2"
          puts ""
-         description
-       when "3"
-         puts ""
-         market_cap
-       when "4"
+         all_coins   
+      when "4"
          puts "Thank  you  for  using  my very own Coinbase CLI"
          break
          else
@@ -53,10 +49,27 @@ class Menu
    end
   end
   
-  def current_rate
-    Scraper.new.current_rate
-      puts "Choose one of the following currencies to get the current rate and descriptionv** BTC, ETH, XRP, BCH, LTC **!"
-      input = gets.strip.to_i
+  def current_rates
+    puts "Bitcoin(BTC), Ethereum (ETH), Ripple (XRP), Bitcoin Cash(BCH), Litecoin(LTC) "
+    all_bios
+  end
+  
+  def all_bios
+    input = " "
+    while input != "exit"
+      puts ""
+      puts "Choose a shortcode"
+        input = gets.strip
+        if (1..Currentprices.new.prices.length).include?(input)
+        coin = Scraper.scrape_coin_page[input - 1]
+          puts "#{coin}"
+        end
+      end
+  
+  end
+  
+  def all_coins
+    puts "What coin would you like to see Bitcoin(BTC), Ethereum (ETH), Ripple (XRP), Bitcoin Cash(BCH), Litecoin(LTC) "
   end
   
   def description
