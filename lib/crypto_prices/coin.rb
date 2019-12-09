@@ -19,27 +19,11 @@ class Coin
     @name = name
   end
   
-  def description=(description)
-    @description = description
-    
-  end
-  
+  def self.description
+    Scraper.scrape_coin_page.each |description|
+    Coin.new(description)
+    @@all << self
+   end
 end
 
-  Bitcoin = Coin.new("Bitcoin")
-  Bitcoin.price=(Scraper.scrape_price_page[0])
-  Bitcoin.description=(Scraper.scrape_coin_page[0])
-  binding.pry
-  # Ethereum = Coin.new(Scraper.scrape_coin_page[1])
-  
-  
-  # Ripple = Coin.new(Scraper.scrape_coin_page[2])
-  
-  
-  # Bitcoin Cash = Coin.new(Scraper.scrape_coin_page[3])
-  
-  
-  # Litecoin = Coin.new(Scraper.scrape_coin_page[4])
-  
-  
-    
+binding.pry 
