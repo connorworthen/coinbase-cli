@@ -64,14 +64,12 @@ class Menu
     while input != "exit"
       puts ""
       puts "Choose a number between 1-5"
-        input = gets.strip.to_i || gets.strip
+        input = gets.strip.to_i
         if (1..CurrentPrices.prices.length).include?(input)
         coin = Scraper.scrape_coin_page[input - 1]
           puts "#{coin}"
+        elsif input < 1 || input > 5
           break
-          else
-          menu
-          puts "That option does not exist. Please select a number from 1 - 4 "
         end
       end
   end
@@ -87,5 +85,6 @@ class Menu
   def market_cap
     puts "test"
   end
-  
+
 end
+  
