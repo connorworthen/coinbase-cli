@@ -41,7 +41,7 @@ class Menu
          current_rates
       when "2"
          puts ""
-         all_bios
+         price_bios
       when "3"
         puts ""
         menu
@@ -55,7 +55,12 @@ class Menu
   end
   
   def current_rates
-    puts "1. Bitcoin(BTC), 2. Ethereum (ETH), 3. Ripple (XRP), 4. Bitcoin Cash(BCH), 5. Litecoin(LTC) "
+    puts "Enter the coins number to see its description."
+    puts "1. Bitcoin(BTC)"
+    puts "2. Ethereum (ETH)"
+    puts "3. Ripple (XRP)"
+    puts "4. Bitcoin Cash(BCH)"
+    puts "5. Litecoin(LTC)"
     all_bios
   end
   
@@ -74,8 +79,8 @@ class Menu
       end
   end
   
-  def all_coins
-    puts "What coin would you like to see Bitcoin(BTC), Ethereum (ETH), Ripple (XRP), Bitcoin Cash(BCH), Litecoin(LTC) "
+  def price_bios
+    
   end
   
   def description
