@@ -53,9 +53,10 @@ class Menu
         menu
       when "6"
          puts "Thank  you  for  using  my very own Coinbase CLI and happy trading!"
-         break
-         else
-         puts "That option does not exist. Enter 5, to return to the main menu or 6 to exit the program! "
+         exit
+        # break
+        # else
+        # puts "That option does not exist. Enter 5, to return to the main menu or 6 to exit the program! "
      end
    end
   end
@@ -67,8 +68,8 @@ class Menu
     input = " "
     while input != '0'
       puts ""
-      puts "Enter the coins number to see the coins description."
-      puts "If you would like to go back to the menu, press enter, then type '5'"
+      puts "Enter the coins number to see the coins description"
+      puts "or if you would like to go back to the menu, press enter, then type '5'"
       bios = Coin.all
       input = gets.strip.to_i
         if (1..Coin.all.length).include?(input)
@@ -76,6 +77,8 @@ class Menu
           puts "#{coins.description}"
           elsif input < 1 || input > 5
             break
+            else
+         puts "That option does not exist. Enter 5, to return to the main menu or 6 to exit the program! "
         end
       end
   end
@@ -87,8 +90,8 @@ class Menu
     input = " "
     while input != '0'
       puts ""
-      puts "Enter the coins number to see the coins current rates."
-      puts "If you would like to go back to the menu, press enter, then type '5'"
+      puts "Enter the coins number to see the coins current rates"
+      puts "or if you would like to go back to the menu, press enter, then type '5'"
       bios = Coin.all
       input = gets.strip.to_i
         if (1..Coin.all.length).include?(input)
@@ -96,6 +99,8 @@ class Menu
           puts "#{coins.price}"
           elsif input < 1 || input > 5
             break
+            else
+         puts "That option does not exist. Enter 5, to return to the main menu or 6 to exit the program! "
         end
       end
   end
@@ -107,10 +112,14 @@ class Menu
     puts ""
     puts "3. Remember, there’s no way back if you lose your private key(crypto wallet). Once lost, your digital funds will disappear into the giant Crypto-void. Unless hacked, which is virtually impossible considering the structure of blockchain technology, your abandoned e-wallet will be lingering out there somewhere."
     puts ""
+    puts "Enter 5, to return to the main menu or 6 to exit the program! "
+    puts ""
   end
   
   def buy
     puts "You can purchase different Cryptocurrencies from coinbase.com! Coinbase offers fiat onramps, or the ability to purchase coins with traditional fiat currencies. Bitcoin, Ethereum, Litecoin, and many more can all be purchased with fiat currencies on Coinbase."
+    puts ""
+    puts "Enter 5, to return to the main menu or 6 to exit the program! "
     puts ""
   end
 
