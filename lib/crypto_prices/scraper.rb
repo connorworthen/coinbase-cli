@@ -58,7 +58,7 @@ class Scraper
     price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
   end
   
-  def self.litecoincoinprice
+  def self.litecoinprice
     url = open("https://www.coinbase.com/price/litecoin")
     doc = Nokogiri::HTML(url)
     price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text

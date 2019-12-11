@@ -9,7 +9,6 @@ class Coin
   
   def initialize(name)
     @name = name
-    @price = price
     @@all << self
   end
   
@@ -30,14 +29,9 @@ bitcoin_cash.description = (Scraper.bitcoin_cash)
 litecoin = Coin.new("Litecoin(LTC)")
 litecoin.description = (Scraper.litecoin)
 
-bitcoin = Coin.new("Bitcoin(BTC)")
-bitcoin.price = (Scraper.bitcoin)
-ethereum = Coin.new("ethereum(ETH)")
-ethereum.price = (Scraper.ethereum)
-ripple = Coin.new("Ripple(XRP")
-ripple.price = (Scraper.ripple)
-bitcoin_cash = Coin.new("Bitcoin cash(BCH")
-bitcoin_cash.price = (Scraper.bitcoin_cash)
-litecoin = Coin.new("Litecoin(LTC)")
-litecoin.price = (Scraper.litecoin)
+bitcoin.price = (Scraper.bitcoinprice)
+ethereum.price = (Scraper.ethereumprice)
+ripple.price = (Scraper.rippleprice)
+bitcoin_cash.price = (Scraper.bitcoincashprice)
+litecoin.price = (Scraper.litecoinprice)
 #binding.pry 

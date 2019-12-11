@@ -38,7 +38,7 @@ class Menu
      case input
        when "1"
          puts ""
-         current_rates
+         all_bios
       when "2"
          puts ""
          price_bios
@@ -54,33 +54,54 @@ class Menu
    end
   end
   
-  def current_rates
-    puts "Enter the coins number to see its description."
-    puts "1. Bitcoin(BTC)"
-    puts "2. Ethereum (ETH)"
-    puts "3. Ripple (XRP)"
-    puts "4. Bitcoin Cash(BCH)"
-    puts "5. Litecoin(LTC)"
-    all_bios
-  end
+  # def current_rates
+  #   puts "Enter the coins number to see its description."
+  #   puts "1. Bitcoin(BTC)"
+  #   puts "2. Ethereum (ETH)"
+  #   puts "3. Ripple (XRP)"
+  #   puts "4. Bitcoin Cash(BCH)"
+  #   puts "5. Litecoin(LTC)"
+  #   all_bios
+  # end
   
   def all_bios
+    Coin.all.each.with_index(1) do |coin, index|
+      puts "#{index}. #{coin.name}"
+    end
     input = " "
-    while input != "exit"
+    while input != '0'
       puts ""
-      puts "Choose a number between 1-5"
-        input = gets.strip.to_i
-        if (1..CurrentPrices.prices.length).include?(input)
-        coin = Scraper.scrape_coin_page[input - 1]
-          puts "#{coin}"
-        elsif input < 1 || input > 5
-          break
+      puts "Choose a Devil Fruit(#1-3) to see its abilities!"
+      puts "If you would like to go back to the menu, type '0'"
+      bios = Coin.all
+      input = gets.strip.to_i
+        if (1..Coin.all.length).include?(input)
+          coins = bios[input - 1]
+          puts "#{coins.description}"
+          elsif input < 1 || input > 5
+            break
         end
       end
   end
   
   def price_bios
-    
+    Coin.all.each.with_index(1) do |coin, index|
+      puts "#{index}. #{coin.name}"
+    end
+    input = " "
+    while input != '0'
+      puts ""
+      puts "Choose a Devil Fruit(#1-3) to see its abilities!"
+      puts "If you would like to go back to the menu, type '0'"
+      bios = Coin.all
+      input = gets.strip.to_i
+        if (1..Coin.all.length).include?(input)
+          coins = bios[input - 1]
+          puts "#{coins.price}"
+          elsif input < 1 || input > 5
+            break
+        end
+      end
   end
   
   def description
