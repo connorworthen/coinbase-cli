@@ -1,38 +1,8 @@
 # Coinbase::Cli
-Hello World! (test)
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/coinbase/cli`. To experiment with that code, run `bin/console` for an interactive prompt.
+Welcome to my first CLI. In this program, you will be able to view different tradeable cryptocurrencies, their current rates, descriptions, and facts about cryptocurrencies. To run the program do 'bundle install', then bin/coinbase-cli. After those two steps, the program will load to the main menu. In the menu, there are 6 options. All of these come with directions on both how to find (ex. current prices on Bitcoin), but also how to return to the main menu and exit the program. From the main menu, entering 1, will take you to current prices, 2, their descriptions, 3, facts about cryptocurrencies, 4, how to buy and trade cryptocurrencies, 5, menu, and 6, exit. Thank you for using my program! Happy investing!
 
-TODO: Delete this and the text above, and describe your gem
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'coinbase-cli'
-```
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install coinbase-cli
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Development
-
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
-
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and tags, and push the `.gem` file to [rubygems.org](https://rubygems.org).
-
-## Contributing
-
-Bug reports and pull requests are welcome on GitHub at https://github.com/'scruffy-variable-3960'/coinbase-cli. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+# Authors
+Connor Worthen-Coinbase-Cli
 
 ## License
 
@@ -41,3 +11,6 @@ The gem is available as open source under the terms of the [MIT License](https:/
 ## Code of Conduct
 
 Everyone interacting in the Coinbase::Cli project’s codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/'scruffy-variable-3960'/coinbase-cli/blob/master/CODE_OF_CONDUCT.md).
+
+## Acknowledgements
+This project was inspired by my dream to one day work as a blockchain engineer!
