@@ -54,16 +54,6 @@ class Menu
    end
   end
   
-  # def current_rates
-  #   puts "Enter the coins number to see its description."
-  #   puts "1. Bitcoin(BTC)"
-  #   puts "2. Ethereum (ETH)"
-  #   puts "3. Ripple (XRP)"
-  #   puts "4. Bitcoin Cash(BCH)"
-  #   puts "5. Litecoin(LTC)"
-  #   all_bios
-  # end
-  
   def all_bios
     Coin.all.each.with_index(1) do |coin, index|
       puts "#{index}. #{coin.name}"
