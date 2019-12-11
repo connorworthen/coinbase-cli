@@ -2,7 +2,7 @@ require "pry"
 
 
 class Menu
-
+  
   def menu
     puts "Welcome to my very own Coinbase CLI"
     start
