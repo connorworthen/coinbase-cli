@@ -1,4 +1,5 @@
 require 'pry'
+require_relative './scraper.rb'
 
 class Coin
   
@@ -11,19 +12,12 @@ class Coin
     @@all << self
   end
   
-  def price=(price)
-    @price = price
+  def self.all
+    @@all
   end
   
-  def name=(name)
-    @name = name
-  end
-  
-  def self.description
-    Scraper.scrape_coin_page.each |description|
-    Coin.new(description)
-    @@all << self
-   end
 end
 
+bitcoin = Coin.new("Bitcoin(BTC)")
+bitcoin.description = (Scraper.bitcoin)
 binding.pry 
