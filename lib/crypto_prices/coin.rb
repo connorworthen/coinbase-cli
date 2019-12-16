@@ -20,7 +20,7 @@ end
 
 bitcoin = Coin.new("Bitcoin(BTC)")
 bitcoin.description = (Scraper.bitcoin)
-ethereum = Coin.new("ethereum(ETH)")
+ethereum = Coin.new("Ethereum(ETH)")
 ethereum.description = (Scraper.ethereum)
 ripple = Coin.new("Ripple(XRP")
 ripple.description = (Scraper.ripple)
