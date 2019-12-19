@@ -1,67 +1,22 @@
-require 'pry'
-require 'open-uri'
-require 'nokogiri'
-
 class Scraper
-  
-  def self.bitcoin
-    url = open("https://www.coinbase.com/price/bitcoin")
+
+  def self.firstscrape
+    url = open("https://www.coinbase.com/price")
     doc = Nokogiri::HTML(url)
-    coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
+    coin_rows = doc.css(".AssetTableRow__Wrapper-sc-1e35vph-0")[0..4]
+    coin_rows.each do |row|
+      name = row.css("h4.Header__StyledHeader-sc-1q6y56a-0")[1].text
+      shortcode = row.css("h4.Header__StyledHeader-sc-1q6y56a-0")[2].text
+      coin = Coin.new(name, shortcode)
+      coin.price = row.css("h4.Header__StyledHeader-sc-1q6y56a-0")[3].text
+      coin.url = row.css("a")[0].attributes["href"].value
+    end
   end
-  
-  def self.ethereum
-    url = open("https://www.coinbase.com/price/ethereum")
+
+  def self.scrape_description(coin_object)
+    url = open("https://www.coinbase.com/#{coin_object.url}")
     doc = Nokogiri::HTML(url)
-    coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
+    coin_object.description = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
   end
-  
-  def self.ripple
-    url = open("https://www.coinbase.com/price/ripple")
-    doc = Nokogiri::HTML(url)
-    coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
-  end
-  
-  def self.bitcoin_cash
-    url = open("https://www.coinbase.com/price/bitcoin-cash")
-    doc = Nokogiri::HTML(url)
-    coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
-  end
-  
-  def self.litecoin
-    url = open("https://www.coinbase.com/price/litecoin")
-    doc = Nokogiri::HTML(url)
-    coin = doc.css(".AssetInfo__DescriptionText-sc-4v99na-3.hnkcSy").text
-  end
-  
-  def self.bitcoinprice
-    url = open("https://www.coinbase.com/price/bitcoin")
-    doc = Nokogiri::HTML(url)
-    price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
-  end
-  
-  def self.ethereumprice
-    url = open("https://www.coinbase.com/price/ethereum")
-    doc = Nokogiri::HTML(url)
-    price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
-  end
-  
-  def self.rippleprice
-    url = open("https://www.coinbase.com/price/ripple")
-    doc = Nokogiri::HTML(url)
-    price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
-  end
-  
-  def self.bitcoincashprice
-    url = open("https://www.coinbase.com/price/bitcoin-cash")
-    doc = Nokogiri::HTML(url)
-    price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
-  end
-  
-  def self.litecoinprice
-    url = open("https://www.coinbase.com/price/litecoin")
-    doc = Nokogiri::HTML(url)
-    price = doc.css(".ChartPriceHeader__BigAmount-sc-9ry7zl-4.dKeshi").text
-  end
-  
+
 end

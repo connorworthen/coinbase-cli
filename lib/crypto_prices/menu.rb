@@ -1,19 +1,16 @@
-require "pry"
-
-
 class Menu
-  
+
   def menu
     puts "Welcome to my very own Coinbase CLI"
     start
   end
-  
+
   def start
     puts ""
     intro
     menu_setting
   end
-  
+
   def intro
     puts ""
     puts "In this program, you will be able to view different tradeable cryptocurrencies,"
@@ -32,7 +29,7 @@ class Menu
     puts ""
     puts ""
   end
-  
+
   def menu_setting
    input = " "
    while input
@@ -60,7 +57,7 @@ class Menu
      end
    end
   end
-  
+
   def all_bios
     Coin.all.each.with_index(1) do |coin, index|
       puts "#{index}. #{coin.name}"
@@ -70,11 +67,11 @@ class Menu
       puts ""
       puts "Enter the coins number to see the coins description"
       puts "or if you would like to go back to the menu, press enter, then type '5'"
-      bios = Coin.all
       input = gets.strip.to_i
         if (1..Coin.all.length).include?(input)
-          coins = bios[input - 1]
-          puts "#{coins.description}"
+          coin = Coin.all[input - 1]
+          Scraper.scrape_description(coin)
+          puts "#{coin.description}"
           elsif input < 1 || input > 5
             break
             else
@@ -82,7 +79,7 @@ class Menu
         end
       end
   end
-  
+
   def price_bios
     Coin.all.each.with_index(1) do |coin, index|
       puts "#{index}. #{coin.name}"
@@ -104,7 +101,7 @@ class Menu
         end
       end
   end
-  
+
   def facts
     puts "1. Cryptocurrencies are extremly volatility which is one of the reasons why many investors choose to steer away from the Crypto-verse. If the value can swing dramatically, it means that you can potentially make large profits, but also large losses."
     puts ""
@@ -115,7 +112,7 @@ class Menu
     puts "Enter 5, to return to the main menu or 6 to exit the program! "
     puts ""
   end
-  
+
   def buy
     puts "You can purchase different Cryptocurrencies from coinbase.com! Coinbase offers fiat onramps, or the ability to purchase coins with traditional fiat currencies. Bitcoin, Ethereum, Litecoin, and many more can all be purchased with fiat currencies on Coinbase."
     puts ""
@@ -124,4 +121,3 @@ class Menu
   end
 
 end
-  
